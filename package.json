@@ -1,1 +1,8 @@
-{"name":"julko-store-backend","version":"1.3.0","private":true,"scripts":{"start":"node julko-wave-backend.js"},"dependencies":{"argon2":"^0.44.0","express":"^5.1.0","jsonwebtoken":"^9.0.2"}}
+{
+  "name":"julko-store-final",
+  "version":"2.0.0",
+  "private":true,
+  "scripts":{"start":"node server.js","test":"node test-flow.js"},
+  "engines":{"node":">=24"},
+  "dependencies":{"argon2":"^0.44.0","express":"^5.1.0","jsonwebtoken":"^9.0.2"}
+}
