@@ -1,0 +1,8 @@
+<label for="photoFile"><b>Photo du produit</b></label>
+<input id="photoFile" type="file" accept="image/jpeg,image/png,image/webp" capture="environment">
+<img id="photoPreview" alt="Aperçu de la photo" hidden style="max-width:180px;max-height:180px;object-fit:contain;border-radius:12px;margin:8px 0">
+<p id="photoMessage"></p>
+<script>
+photoFile.addEventListener('change',()=>{const f=photoFile.files[0];if(!f)return;photoPreview.src=URL.createObjectURL(f);photoPreview.hidden=false;photoMessage.textContent=f.name});
+async function uploadProductPhoto(adminToken){const f=photoFile.files[0];if(!f)return null;if(f.size>5*1024*1024)throw new Error('Photo trop lourde : maximum 5 Mo');const data=new FormData();data.append('image',f);const r=await fetch('/api/admin/upload-image',{method:'POST',headers:{Authorization:'Bearer '+adminToken},body:data});const d=await r.json();if(!r.ok)throw new Error(d.error||'Import photo impossible');return d.url;}
+</script>
